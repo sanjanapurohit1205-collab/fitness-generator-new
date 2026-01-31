@@ -22,7 +22,7 @@ if api_key and not api_key.startswith("PASTE"):
 else:
     print("DEBUG: No valid GEMINI_API_KEY found. Running in LOCAL Engine mode.")
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../frontend', static_folder='../frontend', static_url_path='/static')
 app.secret_key = os.urandom(24)
 
 # -------------------- DATABASE CONFIG --------------------
