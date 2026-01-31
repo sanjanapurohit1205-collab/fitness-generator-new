@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}Your Profile{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="card" style="max-width: 600px; margin: 0 auto;">
+        <h2 class="text-center mb-4">Forge Your Profile</h2>
+
+        <!-- Loading Overlay (Hidden by default) -->
+        <div id="loading" style="display: none; text-align: center; padding: 2rem;">
+            <div class="forging-loader"></div>
+            <h3>Forging your plan...</h3>
+            <p class="text-secondary">Consulting the AI knowledge base...</p>
+        </div>
+
+        <form id="fitnessForm" method="POST" onsubmit="showLoading()">
+            <div class="input-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="input-group">
+                    <label for="height">Height (cm)</label>
+                    <input type="number" id="height" name="height" required>
+                </div>
+                <div class="input-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" id="weight" name="weight" required>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="goal">Fitness Goal</label>
+                <select id="goal" name="goal">
+                    <option value="Lose Weight">Lose Weight</option>
+                    <option value="Gain Muscle">Gain Muscle</option>
+                    <option value="Stay Fit">Stay Fit</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="time">Time Per Day</label>
+                <select id="time" name="time">
+                    <option value="30">30 Minutes</option>
+                    <option value="45">45 Minutes</option>
+                    <option value="60">60 Minutes</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="streak">Streak Goal (Days)</label>
+                <select id="streak" name="streak">
+                    <option value="3">3 Days</option>
+                    <option value="7">7 Days</option>
+                    <option value="14">14 Days</option>
+                    <option value="30">30 Days</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="diet_type">Diet Preference</label>
+                <select id="diet_type" name="diet_type">
+                    <option value="Non-Vegetarian">Non-Vegetarian</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Vegan">Vegan</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%;">Forge My Plan</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function showLoading() {
+        document.getElementById('fitnessForm').style.display = 'none';
+        document.getElementById('loading').style.display = 'block';
+    }
+</script>
+{% endblock %}
